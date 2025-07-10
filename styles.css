@@ -1,0 +1,919 @@
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #dc2626; /* Vermelho */
+    --secondary-color: #000000; /* Preto */
+    --accent-color: #ffffff; /* Branco */
+    --dark-gray: #1a1a1a;
+    --light-gray: #f5f5f5;
+    --text-dark: #333333;
+    --text-light: #666666;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+/* Header e Navegação */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.navbar {
+    padding: 1rem 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(220, 38, 38, 0.3)), 
+                url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--accent-color);
+    position: relative;
+}
+
+.hero-content {
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Botões */
+.btn {
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-color);
+    color: var(--secondary-color);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--accent-color);
+}
+
+/* Seções Gerais */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    color: var(--secondary-color);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.title-underline {
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 0 auto;
+}
+
+/* Seção História */
+.historia {
+    background: var(--light-gray);
+}
+
+.historia-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.historia-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+.stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.historia-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Seção Modalidades */
+.modalidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+}
+
+.modalidade-card {
+    background: var(--accent-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.modalidade-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.modalidade-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(220, 38, 38, 0.9);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modalidade-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-overlay i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.card-content h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.card-content p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.benefits {
+    list-style: none;
+}
+
+.benefits li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+}
+
+.benefits i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Seção Horários */
+.horarios {
+    background: var(--dark-gray);
+    color: var(--accent-color);
+}
+
+.horarios .section-title {
+    color: var(--accent-color);
+}
+
+.horarios-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.horario-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.horario-card h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.horario-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.horario-item:last-child {
+    border-bottom: none;
+}
+
+.dia {
+    font-weight: 500;
+}
+
+.hora {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.nivel {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.horarios-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.info-item {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.info-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.info-item h4 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.info-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Seção Planos */
+.planos {
+    background: var(--light-gray);
+}
+
+.planos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.plano-card {
+    background: var(--accent-color);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.plano-card:hover {
+    transform: translateY(-5px);
+}
+
+.plano-card.featured {
+    border: 3px solid var(--primary-color);
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.plano-header h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.preco {
+    margin-bottom: 2rem;
+}
+
+.moeda {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    vertical-align: top;
+}
+
+.valor {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.periodo {
+    color: var(--text-light);
+}
+
+.plano-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.plano-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--light-gray);
+    color: var(--text-light);
+}
+
+.plano-features li:last-child {
+    border-bottom: none;
+}
+
+.plano-features i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Seção Contato */
+.contato {
+    background: var(--secondary-color);
+    color: var(--accent-color);
+}
+
+.contato .section-title {
+    color: var(--accent-color);
+}
+
+.contato-simple {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contato-info-center h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.contato-simple .info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contato-simple .info-item:hover {
+    transform: translateY(-5px);
+}
+
+.contato-simple .info-item i {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contato-simple .info-item h4 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.contato-simple .info-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.cta-whatsapp {
+    text-align: center;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25d366;
+    color: var(--accent-color);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background: #1da851;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp i {
+    font-size: 1.5rem;
+}
+
+/* Footer */
+.footer {
+    background: var(--dark-gray);
+    color: var(--accent-color);
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.footer-section h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-section p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.footer-section p i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: var(--accent-color);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.footer-credits p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.footer-credits a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-credits a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--secondary-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .historia-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .modalidades-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .horarios-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .stats {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .planos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plano-card.featured {
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .modalidades-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modalidade-card {
+        max-width: none;
+    }
+
+    .horarios-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .horario-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-header {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Efeitos de scroll */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
