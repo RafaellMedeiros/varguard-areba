@@ -190,6 +190,9 @@ function createBackToTopButton() {
 
 // Inicializar funcionalidades quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar carrossel de modalidades
+    new ModalidadesCarousel();
+    
     createBackToTopButton();
     
     // Adicionar efeito hover nos cards
@@ -291,3 +294,112 @@ preloaderStyle.textContent = `
 `;
 
 document.head.appendChild(preloaderStyle);
+
+// Carrossel de Modalidades
+class ModalidadesCarousel {
+    constructor() {
+        this.carousel = document.querySelector('.modalidades-carousel');
+        this.cards = document.querySelectorAll('.modalidade-card');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+        this.indicators = document.querySelectorAll('.indicator');
+        this.currentSlide = 0;
+        this.totalSlides = this.cards.length;
+        this.autoPlayInterval = null;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.carousel) return;
+        
+        this.setupEventListeners();
+        this.startAutoPlay();
+        this.updateCarousel();
+    }
+    
+    setupEventListeners() {
+        this.prevBtn?.addEventListener('click', () => this.prevSlide());
+        this.nextBtn?.addEventListener('click', () => this.nextSlide());
+        
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Pausar autoplay quando hover
+        this.carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
+        this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+        
+        // Touch events para mobile
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+        
+        this.carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            this.stopAutoPlay();
+        });
+        
+        this.carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+        });
+        
+        this.carousel.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const diffX = startX - currentX;
+            
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    this.nextSlide();
+                } else {
+                    this.prevSlide();
+                }
+            }
+            
+            this.startAutoPlay();
+        });
+    }
+    
+    nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateCarousel();
+    }
+    
+    prevSlide() {
+        this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+        this.updateCarousel();
+    }
+    
+    goToSlide(index) {
+        this.currentSlide = index;
+        this.updateCarousel();
+    }
+    
+    updateCarousel() {
+        const translateX = -this.currentSlide * 100;
+        this.carousel.style.transform = `translateX(${translateX}%)`;
+        
+        // Atualizar indicadores
+        this.indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentSlide);
+        });
+    }
+    
+    startAutoPlay() {
+        this.stopAutoPlay();
+        this.autoPlayInterval = setInterval(() => {
+            this.nextSlide();
+        }, 5000); // 5 segundos
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+            this.autoPlayInterval = null;
+        }
+    }
+}
