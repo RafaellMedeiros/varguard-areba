@@ -60,6 +60,22 @@ html {
     padding: 0 20px;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
 .logo h2 {
     font-family: 'Bebas Neue', cursive;
     font-size: 2rem;
@@ -1009,6 +1025,10 @@ html {
 
 /* Responsividade */
 @media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -1129,6 +1149,10 @@ html {
 }
 
 @media (max-width: 480px) {
+    .logo-img {
+        height: 35px;
+    }
+
     .container {
         padding: 0 15px;
     }
